@@ -1,0 +1,32 @@
+{
+  "appName": "Just a check",
+  "sparkProperties" : {
+    "spark.master": "local[*]"
+  },
+  "inputSchema" : [
+    {"col1": "string"},
+    {"col2": "string"}
+  ],
+  "dataProcessor": {
+    "type": "json",
+    "properties": {
+      "path": "src/main/resources/schemaData.json",
+      "outputSchemaPath": "/home/ankitagr/IdeaProjects/HaloStreaming/src/main/resources/outputSchema.csv"
+    }
+  },
+  "inputProperties" : {
+    "writer": "kafka",
+    "confProperties": {
+       "kafka.bootstrap.servers": "localhost:9092",
+       "subscribe": "jsonTopic",
+       "startingOffsets" : "earliest"
+    }
+  },
+  "writerProperties": {
+    "writer": "console",
+    "confProperties": {
+      "path": "/home/ankitagr/IdeaProjects/HaloStreaming/outputDir",
+      "checkpointLocation": "/home/ankitagr/IdeaProjects/HaloStreaming/checkpointDir"
+    }
+  }
+}

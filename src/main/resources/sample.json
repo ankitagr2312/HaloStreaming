@@ -1,0 +1,22 @@
+{
+  "appName": "Just a check",
+  "sparkProperties" : {
+    "spark.master": "local[*]"
+  },
+  "inputSchema" : [
+    {"col1": "string"},
+    {"col2": "int"}
+  ],
+  "kafkaInputProperties" : {
+    "kafka.bootstrap.servers": "localhost:9092",
+    "subscribe": "jsonTopic",
+    "startingOffsets" : "earliest"
+  },
+  "writerProperties": {
+    "writer": "parquet",
+    "properties": {
+    "path": "/home/ankitagr/IdeaProjects/HaloStreaming/outputDir",
+    "checkpointLocation": "/home/ankitagr/IdeaProjects/HaloStreaming/checkpointDir"
+    }
+  }
+}
